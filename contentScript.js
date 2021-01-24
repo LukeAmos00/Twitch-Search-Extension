@@ -14,6 +14,21 @@ const insertSearchBox = () => {
     /* Change text inside box */
     var searchBoxInput = seachBox.lastChild.lastChild;
     searchBoxInput.setAttribute("placeholder", "Search Following");
+
+    searchBoxInput.setAttribute("id", "side-nav.find-following")
+
+    return searchBoxInput;
 }
 
-insertSearchBox();
+const getFollowList = () => {
+
+    /* Expand follow list */
+    let showMore = document.querySelector('button[data-test-selector="ShowMore"]');
+
+    while (showMore != null) {
+        showMore.click()
+        showMore = document.querySelector('button[data-test-selector="ShowMore"]');
+    }
+
+    return document.querySelectorAll('a[data-test-selector="followed-channel"]');
+}
