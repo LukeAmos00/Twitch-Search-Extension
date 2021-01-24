@@ -1,0 +1,14 @@
+{
+    "manifest_version": 1,
+    "name": "Twitch Following Search",
+    "version": "1.0.0",
+  
+    "default_locale": "en",
+    "description": "Adds a search box to bottom of 'following' list on Twitch.tv which filters list to easily find the user you are searching for.",
+    "icons": {  "16": "icon16.png",
+                "48": "icon48.png",
+                "128": "icon128.png"
+    },
+  
+    "author": "Luke Amos"
+  }
