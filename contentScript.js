@@ -1,7 +1,20 @@
+const checkSearchBox = () => {
+    const selector = "#sideNav > div > div > div.side-nav-search-input.tw-border-t.tw-pd-1";
+    const sideNavEndBox = document.querySelector(selector);
+
+    const preExisitingBox = document.getElementById('side-nav.find-following');
+
+    /* Inserts search box if window size is large enough */
+    if (sideNavEndBox && !preExisitingBox) {
+        insertSearchBox();
+    }
+}
+
 const insertSearchBox = () => {
 
     /* Select section at bottom of sideNav */
-    const sideNavEndBox = document.querySelector("#sideNav > div > div > div.side-nav-search-input.tw-border-t.tw-pd-1");
+    const selector = "#sideNav > div > div > div.side-nav-search-input.tw-border-t.tw-pd-1";
+    const sideNavEndBox = document.querySelector(selector);
 
     /* Clone search friends box */
     const searchBoxClone = sideNavEndBox.lastChild.cloneNode(true);
@@ -16,8 +29,6 @@ const insertSearchBox = () => {
     searchBoxInput.setAttribute("placeholder", "Search Following");
 
     searchBoxInput.setAttribute("id", "side-nav.find-following")
-
-    return searchBoxInput;
 }
 
 const getFollowList = () => {
@@ -32,3 +43,8 @@ const getFollowList = () => {
 
     return document.querySelectorAll('a[data-test-selector="followed-channel"]');
 }
+
+checkSearchBox();
+
+/* Makes box reappear when enough room, delay ensures container loads first */
+window.addEventListener('resize', () => setTimeout(checkSearchBox, 1));
