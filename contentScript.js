@@ -9,6 +9,7 @@ const checkSearchBox = () => {
     /* Inserts search box if window size is large enough */
     if (sideNavEndBox && !preExisitingBox) {
         insertSearchBox();
+        filterUsers();
     }
 };
 
@@ -58,6 +59,9 @@ const getFollowList = () => {
 
 const filterUsers = () => {
     const followingListNodes = getFollowList();
+
+    /* Case of following no one */
+    if (!followingListNodes.length) return;
 
     const input = document.getElementById('side-nav.find-following');
     input.addEventListener('input', () => {
