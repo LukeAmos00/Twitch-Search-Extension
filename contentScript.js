@@ -111,10 +111,7 @@ const pushTop = node => {
     );
 };
 
-checkSearchBox();
+window.addEventListener("load", checkSearchBox);
 
 /* Makes box reappear when enough room, delay ensures container loads first */
 window.addEventListener('resize', () => setTimeout(checkSearchBox, 1));
-
-/* filterUsers requires Twitch's scripts to have finished loading */
-window.addEventListener("load", () => setTimeout(filterUsers, 10));
