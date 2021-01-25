@@ -58,13 +58,16 @@ const getFollowList = () => {
 };
 
 const filterUsers = () => {
-    const followingListNodes = getFollowList();
 
     /* Case of following no one */
-    if (!followingListNodes.length) return;
+    if (!document.getElementById('side-nav.find-following')) return;
 
     const input = document.getElementById('side-nav.find-following');
     input.addEventListener('input', () => {
+
+        /* Needs updating on each input as list may not have been fully extended. */
+        const followingListNodes = getFollowList();
+
         if (input.value === "") {
             sortFollowing();
             return;
@@ -74,9 +77,7 @@ const filterUsers = () => {
             const searchQuery = input.value.toLowerCase();
             const channel = node.getAttribute('href').toLowerCase();
 
-            if (channel.includes(searchQuery)) {
-                pushTop(node);
-            }
+            if (channel.includes(searchQuery)) pushTop(node);
         });
     });
 };
